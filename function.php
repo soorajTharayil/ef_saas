@@ -1,4 +1,5 @@
 <?php
+//creating a function 
 function createDB($dbname)
 {
 

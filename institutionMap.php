@@ -8,13 +8,12 @@ Page responsible for mapping an hospital to a parent organization.
 require_once "includes/sessionCheck.php";
 require_once "includes/connection.php";
 
-// Fetch data from the 'table_name' table
+// Fetch data from the 'instance' table
 $query = "SELECT * FROM instance " ;
 $result = mysqli_query($conn, $query);
 
 
-
-
+// Processing form data when form is submitted
 if(isset($_POST['submit'])) {
     $selected_val = $_POST['dropdown'];
     $query1 = "SELECT * FROM institution WHERE institution_id='$selected_val'";
@@ -29,8 +28,6 @@ if(isset($_POST['submit'])) {
     $result2 = mysqli_query($conn, $query2);
     if ($result2) {
        
-
-
        // header("location: index");
         echo "<script>alert('Record updated successfully')</script>";
     } else {

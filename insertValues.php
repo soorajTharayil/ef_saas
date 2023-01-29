@@ -5,11 +5,18 @@ add departments, change questions
 -->
 
 <?php
+// Include config file
 require_once "includes/connection.php";
 require_once "includes/sessionCheck.php";
+
+// Define variables and initialize with empty values
 $name = "";
-$id = $_GET['id'];
 $type = $type_err = "";
+
+//in id varibale the the value of ih_id is stored which we will get from previous page
+$id = $_GET['id'];
+
+//query to fetch detailes from instance_history table based on id passed from previous page
 $query1 = "SELECT * FROM instance WHERE instance_id = '$id'";
 $result1 = mysqli_query($conn, $query1);
 while($row = mysqli_fetch_assoc($result1))
@@ -18,26 +25,28 @@ while($row = mysqli_fetch_assoc($result1))
            $name = $row['hospital_name'];
         }
 
-
+//query to fetch details from institution table
 $query3 = "SELECT * FROM institution";
 $result3 = mysqli_query($conn, $query3);
 
 
-
+// Processing form data when form is submitted
 if (isset($_POST['submit'])) {
   // Get the form data
   $startdate = $_POST['startdate'];
   $enddate = $_POST['enddate'];
   $instid=$_POST['dropdown'];
   $status=$_POST['status'];
-$uid=$_SESSION["id"];  
+  $uid=$_SESSION["id"];  
 if (strlen($_POST['type']) == 0) {
   $type_err = "Select the type";
 } else {
   $type = $_POST["type"];
 }
+  
 
-  $sql = "INSERT INTO instance_history (instance_id, hospital_name, institution_id,inst_type,status,startdate,enddate,user_id) VALUES ('$id', '$name', '$instid','$type','$status','$startdate','$enddate',$uid)";
+//query to insert instance_history table 
+    $sql = "INSERT INTO instance_history (instance_id, hospital_name, institution_id,inst_type,status,startdate,enddate,user_id) VALUES ('$id', '$name', '$instid','$type','$status','$startdate','$enddate',$uid)";
     $res=(mysqli_query($conn, $sql));
   if($res){   
     //header("location: index ");

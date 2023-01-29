@@ -1,5 +1,5 @@
 <!--
-Listing accounts with type==account
+Listing accounts with type==ACCOUNT
 -->
 
 <?php
@@ -9,7 +9,7 @@ require_once "includes/sessionCheck.php";
 require_once "includes/connection.php";
 
 
-// Perform a query
+//  query to fetch data from two tables (instance,instance_history) based on instance type is ACCOUNT
 $query = "SELECT slug as link,status,startdate,enddate,inst_type,instance.hospital_name,instance_history.ih_id FROM instance,instance_history WHERE instance.instance_id=instance_history.instance_id AND inst_type='ACCOUNT'";
 $result = mysqli_query($conn, $query);
 

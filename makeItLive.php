@@ -9,9 +9,8 @@ require_once "includes/sessionCheck.php";
 require_once "includes/connection.php";
 
 
-// Perform a query
+//  query to fetch data from instance
 $query = "SELECT * FROM instance ORDER BY `created_at` ASC";
-
 $result = mysqli_query($conn, $query);
 
 ?>

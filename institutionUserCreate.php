@@ -145,7 +145,7 @@ include 'includes/templates/head.php';
 
 
                 <!--    ADD YOUR CONTENT HERE    -->
-                <h2>Sign Up</h2>
+                <h2>Create User account</h2>
                 <p>Please fill this form to create an account.</p>
                 <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
 

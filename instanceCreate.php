@@ -9,11 +9,13 @@ database, type of account, module access, start date, end date.
 require_once "includes/sessionCheck.php";
 require_once "includes/connection.php";
 
-
+// Define variables and initialize with empty values
 $subdomain  = $subdomain_err = "";
 $hospital_name = $hospital_name_err = "";
 $dbname = $dbname_err = "";
 $id = 0;
+
+
 // Processing form data when form is submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 

@@ -10,12 +10,15 @@ Same page with charts for whatever is displaying here to instituion login
 require_once "includes/sessionCheck.php";
 require_once "includes/connection.php";
 
+//condition to check if the id has any valuepresent in it
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
+
+    //query to fetch data from instance_history based on the id passed from previous page
     $query = "SELECT *  FROM instance_history WHERE institution_id = '$id'";
     $result = mysqli_query($conn, $query);
   
-
+    //query to fetch data from institution based on the id passed from previous page
     $query1 = "SELECT * FROM institution WHERE institution_id = '$id'";
     $result1 = mysqli_query($conn, $query1);
     while($row = mysqli_fetch_assoc($result1))

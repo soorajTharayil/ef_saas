@@ -10,9 +10,8 @@ require_once "includes/sessionCheck.php";
 require_once "includes/connection.php";
 
 
-// Perform a query
+// //  query to fetch data from two tables (institution,admin) 
 $query = "SELECT i.institution_id, i.title, i.description, a.username as name FROM institution i, admin a WHERE i.user_id= a.user_id";
-
 $result = mysqli_query($conn, $query);
 
 ?>

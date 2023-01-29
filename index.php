@@ -1,16 +1,19 @@
 <!--
-COPY PASTE THIS FILE AND DONT EDIT HERE ONLY FOR VIEWINGS.
-IN THE NEW FILE REMOVE THIS COMMENT AND ADD PAGE DESCRIPTION 
+Page responsbile to display  the over all details of 
+Total Instances,ACCOUNT ,DEMO,Total institutions
 -->
+
 <?php
 // Include config file
 require_once "includes/sessionCheck.php";
 require_once "includes/connection.php";
 
+
 $user=$_SESSION["name"];
 $totalInstance = 0;
 $demo=0; $account=0;
 $institution=0;
+
 // Fetch data from the 'table_name' table
 $query = "SELECT  * from instance";
 $result = mysqli_query($conn, $query);
@@ -22,6 +25,7 @@ if ($result) {
     else $totalInstance=0;
 }
 
+//query to fetch details from instance_history table based on institution type is ACCOUNT
 $query2 = "SELECT  * from instance_history where inst_type='ACCOUNT'";
 $result2 = mysqli_query($conn, $query2);
 $row2 = mysqli_num_rows($result2);
@@ -32,7 +36,7 @@ if ($result2) {
     else $account=0;
 }
 
-
+//query to fetch details from instance_history table based on institution type is DEMO
 $query3 = "SELECT  * from instance_history where inst_type='DEMO'";
 $result3 = mysqli_query($conn, $query3);
 $row3 = mysqli_num_rows($result3);
@@ -43,7 +47,7 @@ if ($result3) {
     else $demo;
 }
 
-
+//query to fetch details from institution table 
 $query5 = "SELECT  * from institution ";
 $result5 = mysqli_query($conn, $query5);
 $row5 = mysqli_num_rows($result5);

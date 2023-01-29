@@ -9,7 +9,7 @@ require_once "includes/sessionCheck.php";
 require_once "includes/connection.php";
 
 
-// Perform a query
+//  query to fetch data from two tables (instance,instance_history) based on instance type is DEMO
 $query = "SELECT slug as link,status,startdate,enddate,inst_type,instance.hospital_name,instance_history.ih_id FROM instance,instance_history WHERE instance.instance_id=instance_history.instance_id AND inst_type='DEMO'";
 $result = mysqli_query($conn, $query);
 

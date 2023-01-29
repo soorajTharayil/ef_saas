@@ -13,15 +13,15 @@ $title = $description = "";
 
 // Processing form data when form is submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-
     $title = $_POST["title"];
     $description = $_POST["description"];
     $userid = $_SESSION["id"];
 
-    //insert into DB -Instituiton table values of title and description with session userId
 
+    //insert into DB -Instituiton table values of title and description with session userId
     $sql = "INSERT INTO institution (title,description, user_id) VALUES (?, ?, ?)";
 
+    
     if ($stmt = mysqli_prepare($conn, $sql)) {
         // Bind variables to the prepared statement as parameters
         $stmt->bind_param("ssi", $title, $description, $userid);
