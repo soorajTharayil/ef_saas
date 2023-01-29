@@ -10,7 +10,7 @@ require_once "includes/connection.php";
 
 
 //  query to fetch data from instance
-$query = "SELECT * FROM instance ORDER BY `created_at` ASC";
+$query = "SELECT *THIRD COMMIT( FROM instance ORDER BY `created_at` ASC";
 $result = mysqli_query($conn, $query);
 
 ?>

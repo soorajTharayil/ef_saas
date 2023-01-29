@@ -44,6 +44,10 @@ if (strlen($_POST['type']) == 0) {
   $type = $_POST["type"];
 }
 
+ //validating start date and end date 
+ if($startdate >= $enddate){
+  echo "Start date and end date should be enter correctly";
+}else{
 
    //query to update instance_history table 
     $sql = "UPDATE  instance_history SET startdate = '$startdate', enddate = '$enddate', institution_id = '$instid', status = '$status', inst_type = '$type' WHERE ih_id = '$id'";
@@ -55,6 +59,7 @@ if (strlen($_POST['type']) == 0) {
   } else {
     echo "Error updating record: " . mysqli_error($conn);
   }
+}
 }
 
 

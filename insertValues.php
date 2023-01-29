@@ -43,8 +43,10 @@ if (strlen($_POST['type']) == 0) {
 } else {
   $type = $_POST["type"];
 }
-  
-
+ //validating start date and end date 
+if($startdate >= $enddate){
+  echo "Start date and end date should be enter correctly";
+}else{
 //query to insert instance_history table 
     $sql = "INSERT INTO instance_history (instance_id, hospital_name, institution_id,inst_type,status,startdate,enddate,user_id) VALUES ('$id', '$name', '$instid','$type','$status','$startdate','$enddate',$uid)";
     $res=(mysqli_query($conn, $sql));
@@ -55,6 +57,7 @@ if (strlen($_POST['type']) == 0) {
   } else {
     echo "Error updating record: " . mysqli_error($conn);
   }
+}
 }
 
 
@@ -102,7 +105,7 @@ include 'includes/templates/head.php';
 
               <label for="enddate"><b>Mapping to instituion</b></label><br>
               <select name="dropdown">
-                <option value="0">Select Institution</option>
+                <option value="0" >Select Institution</option>
                 <?php
                 while ($row = mysqli_fetch_assoc($result3)) {
                   ?>
